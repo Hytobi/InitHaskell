@@ -67,9 +67,19 @@ chaineDomino (a, b) = fst(a) == fst(b) || fst(b) == snd(a) || snd(a) == snd(b) |
 
 {- Écrivez une fonction qui détermine s’il est possible de créer une chaîne avec trois dominos donnés. -} 
 
+chaineDominoTrois::((Int,Int),(Int,Int),(Int,Int)) -> Bool
+chaineDominoTrois (a, b, c) = chaineDomino (a, b) || chaineDomino (a, c) || chaineDomino (b, c)
 
 {- Écrivez une fonction qui, étant donné une somme s en centimes d’euros et des nombres de
 pièces a, b, c et d, respectivement de 2, 1, 0,5 et 0,10 euros, retourne vrai si l’on peut payer
 exactement la somme en utilisant une partie ou la totalité des pièces et faux sinon.
 -}
 
+compteEstBon (a, b, c, d, s)
+    | a < 0 || b < 0 || c < 0 || d < 0 || s < 10 = False
+    | s - a*200 + b*100 + c*50 + d*10 == 0 = True
+    | s - a*200 + b*100 + c*50 + d*10 < 0 = False
+    | s - 200 > 0 = compteEstBon (a-1, b, c, d, s)
+    | s - 100 > 0 = compteEstBon (a, b-1, c, d, s) 
+    | s - 50 > 0 = compteEstBon (a, b, c-1, d, s) 
+    | s - 10 > 0 = compteEstBon (a, b, c, d-1, s)
