@@ -14,3 +14,6 @@ donnés.
 7. Écrivez une fonction qui, étant donné une somme s en centimes d’euros et des nombres de
 pièces a, b, c et d, respectivement de 2, 1, 0,5 et 0,10 euros, retourne vrai si l’on peut payer
 exactement la somme en utilisant une partie ou la totalité des pièces et faux sinon.
+
+
+Dans le terminal : ghci + :load exo.hs
