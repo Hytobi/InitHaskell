@@ -9,7 +9,7 @@ entier naturel n. (Par exemple, pour n = 124 le résultat doit être 1 + 2 + 4 =
 
 sommeChiffres :: Integer -> Integer
 sommeChiffres n
-    | n < 0 = 0
+    | n < 0 = sommeChiffres ( abs n )
     | n < 10 = n
     | otherwise = ( n `mod` 10) + sommeChiffres ( n `div` 10)
 
@@ -34,12 +34,6 @@ fac n
     | n == 0 = 1
     | n > 0 = fac ( n - 1) * n
 
-facTerm :: Integer -> Integer
-facTerm n
-    | n < 0 = 0
-    | n == 0 = 1
-    | n > 0 = facTerm ( n - 1) * n
-
 -- Terminal recursive
 fac’ :: Integer -> Integer
 fac’ n = facAux (1 , n )
@@ -52,9 +46,9 @@ facAux (a , n )
 
 -- Avec sous fonction
 fac’’ :: Integer -> Integer
-fac’’ n = facAux’’ (1 , n )
+fac’’ n = facAuxW (1 , n )
     where
-        facAux (a , n )
+        facAuxW (a , n )
             | n < 0 = 0
             | n == 0 = a
             | n > 0 = facAux ( a * n , n - 1)

@@ -93,4 +93,30 @@ nibo(k,n)
 tetra(i) = nibo(4,i)
 penta(i) = nibo(5,i)
 hexa(i) = nibo(6,i)
+
+
 {-Exo 5 -}
+estPremier::Integer -> Bool
+estPremier(n)
+    | n <= 1 = False
+    | n == 2 = True
+    | n `mod` 2 == 0 = False
+    | otherwise = estPremierAux(n, 3)
+    where
+        estPremierAux::(Integer,Integer) -> Bool
+        estPremierAux(n, i)
+            | i*i > n = True
+            | n `mod` i == 0 = False
+            | otherwise = estPremierAux(n, i+2)
+
+-- Goldbach
+goldbach::Integer -> (Integer,Integer)
+goldbach(n)
+    | n <= 2 = error "n doit etre superieur a 2"
+    | n `mod` 2 == 1 = error "n doit etre pair"
+    | otherwise = goldbachAux(n, 2)
+    where
+        goldbachAux::(Integer,Integer) -> (Integer,Integer)
+        goldbachAux(n, i)
+            | estPremier(i) && estPremier(n-i) = (i, n-i)
+            | otherwise = goldbachAux(n, i+1)
