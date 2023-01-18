@@ -22,14 +22,11 @@ rem9 n
     | otherwise = n-9
 
 --Exercice 4
+--On fait le rem9 en meme temps
 sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
-sumDigits (x:xs) = x + sumDigits xs
+sumDigits (x:xs) = (rem9 x) + sumDigits xs
 
 --Exercice 5
-rem9List :: [Integer] -> [Integer]
-rem9List [] = []
-rem9List (x:xs) = rem9 x : rem9List xs
-
 validate :: Integer -> Bool
-validate n = (sumDigits (rem9List (doubleEveryOther (toDigitsRev n))) `mod` 10 ) == 0
+validate n = (sumDigits(doubleEveryOther (toDigitsRev n)) `mod` 10 ) == 0
