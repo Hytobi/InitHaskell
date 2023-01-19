@@ -15,11 +15,7 @@ testSumDigits :: [Bool]
 testSumDigits = [ sumDigits [1,1,8,1,0,4] == 15, sumDigits [1,2,3] == 6 ]
 
 testValidate :: [Bool]
-testValidate =
-  [ validate 4012888888881881,
-    not (validate 4012888888881882),
-    not (validate 4012888888881892)
-  ]
+testValidate = [ validate 4012888888881881, not (validate 4012888888881882), not (validate 4012888888881892) ]
 
 
 test :: [Bool] -> Bool
@@ -28,14 +24,5 @@ test (x : xs) = x && test xs
 
 testAll :: [Char]
 testAll
-  | testResult == True = "Success!"
-  | otherwise = "Fail!"
-  where
-    testResult =
-      test
-        [ test testToDigitsRev,
-          test testDoubleEveryOther,
-          test testRem9,
-          test testSumDigits,
-          test testValidate
-        ]
+    | test [ test testToDigitsRev, test testDoubleEveryOther,test testRem9, test testSumDigits,test testValidate ] == True = "Success!"
+    | otherwise = "Fail!"
