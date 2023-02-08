@@ -15,13 +15,8 @@ example :: BST a
 example = Node 8 (Node 3 (Node 1 Empty Empty) (Node 6 (Node 4 Empty Empty) (Node 7 Empty Empty) ) ) (Node 10 Empty (Node 14 (Node 13 Empty Empty) Empty ))
 
 Représente l'arbre suivant:
-8
-/ \
- 3 10
-/ \ \
- 1 6 14
-/ \ /  
- 4 7 13
+
+<img width="124" alt="BST" src="./img.png"/>
 
 ## Fonction disponible
 
